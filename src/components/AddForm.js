@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const AddForm = (props) => {
 
-    const task = null;
+    const [input, setInput] = useState("");
+    
+    const handleInput = (e) =>{
+        //console.log(e);
+        setInput(e.target.value);
+    }
+
+    const handleClick = (e) =>{
+        props.addFunc(input);
+        setInput("");
+    }
+
     return (
         <div>
-            <input />
-            <button>➕ Add task</button>
+            <input value={input} onChange={handleInput}/>
+            <button onClick={handleClick}>➕ Add task</button>
         </div>
     )
 }

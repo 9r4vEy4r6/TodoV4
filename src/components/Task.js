@@ -1,8 +1,7 @@
 import React from 'react';
 
 const Task = (props) => {
-
-    const task = null;
+    //console.log(props);
     return (
         <li>{props.taskData}</li>
     )

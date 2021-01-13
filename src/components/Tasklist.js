@@ -3,8 +3,11 @@ import Task from './Task';
 
 const Tasklist = (props) => {
 
-    const tasks  = ["Task 1","Task 2","Task 3","Task 4"]
-    const list = tasks.map((task,i) => <Task key={i} taskData={task} />);
+    const list = props.tasks.map((task,i) => {
+        //console.log(i);
+        //console.log(task);
+        return <Task taskData={task} key={i} />
+    });
     return (
         <ul>
             {[list]}
