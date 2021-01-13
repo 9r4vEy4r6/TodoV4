@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FormControl , InputLabel, Button, Input } from '@material-ui/core';
 
 const AddForm = (props) => {
 
@@ -10,14 +11,25 @@ const AddForm = (props) => {
     }
 
     const handleClick = (e) =>{
-        props.addFunc(input);
-        setInput("");
+        e.preventDefault();
+        if(input!=="")
+        {
+            props.addFunc(input);
+            setInput("");
+        }
     }
 
     return (
         <div>
-            <input value={input} onChange={handleInput}/>
-            <button onClick={handleClick}>➕ Add task</button>
+            <form>
+                <FormControl>
+                    <InputLabel htmlFor="my-input"> 📓 Task name</InputLabel>
+                    <Input id="my-input" value={input} onChange={handleInput} /> 
+                    <Button disabled={!input} variant="contained" color="primary" type="submit" onClick={handleClick}>
+                        ➕ Add task
+                    </Button>
+                </FormControl>
+            </form>
         </div>
     )
 }
