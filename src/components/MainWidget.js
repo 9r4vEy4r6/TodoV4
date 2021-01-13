@@ -3,7 +3,7 @@ import AddForm from './AddForm';
 import Tasklist from './Tasklist';
 
 const MainWidget = (props) => {
-    const [todos, setTodos] = useState(["Task 1","Task 2","Task 3","Task 4"]);
+    const [todos, setTodos] = useState([{name : "Task1", description:"Description 1"}, {name : "Task2", description:"Description 2"}, {name : "Task3", description:"Description 3"}]);
 
     const addTodo = (data) => {
         // console.log( '👾', 'Parent method here' );
