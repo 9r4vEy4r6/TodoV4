@@ -7,12 +7,10 @@ const AddForm = (props) => {
     const [input2, setInput2] = useState("");
     
     const handleInput1 = (e) =>{
-        //console.log(e);
         setInput1(e.target.value);
     }
 
     const handleInput2 = (e) =>{
-        //console.log(e);
         setInput2(e.target.value);
     }
 

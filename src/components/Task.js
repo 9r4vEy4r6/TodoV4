@@ -1,8 +1,7 @@
 import React from 'react';
-import {ListItem, ListItemAvatar, Avatar, ListItemText} from '@material-ui/core';
+import {ListItem, ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, Button} from '@material-ui/core';
 
 const Task = (props) => {
-    //console.log(props);
     return (
         <ListItem>
             <ListItemAvatar>
@@ -11,6 +10,11 @@ const Task = (props) => {
             </Avatar>
             </ListItemAvatar>
             <ListItemText primary={props.taskData.name} secondary={props.taskData.description} />
+            <ListItemSecondaryAction>
+                <Button variant="text" color="secondary">
+                    🎯
+                </Button> 
+            </ListItemSecondaryAction>
         </ListItem>
     )
 }

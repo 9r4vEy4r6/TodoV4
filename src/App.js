@@ -1,4 +1,4 @@
-import './App.css';
+import './css/App.css';
 import MainWidget from './components/MainWidget';
 
 function App() {
