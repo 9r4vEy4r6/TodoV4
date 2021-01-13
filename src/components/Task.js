@@ -4,7 +4,7 @@ const Task = (props) => {
 
     const task = null;
     return (
-        {task}
+        <li>{props.taskData}</li>
     )
 }
 

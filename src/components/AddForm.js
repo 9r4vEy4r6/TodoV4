@@ -6,7 +6,7 @@ const AddForm = (props) => {
     return (
         <div>
             <input />
-            <button> ➕ Add task</button>
+            <button>➕ Add task</button>
         </div>
     )
 }
