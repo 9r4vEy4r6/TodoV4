@@ -13,7 +13,7 @@ const MainWidget = (props) => {
         db
             .collection('todos')
             .onSnapshot(snapshot => {
-                setTodos(snapshot.docs.map(doc => doc.data()))
+                setTodos(snapshot.docs.map(doc => ({id : doc.id , data : doc.data()} )))
             });
     }, []);
 

@@ -4,7 +4,7 @@ import MainWidget from './components/MainWidget';
 function App() {
   return (
     <div className="App">
-      <h1>Hello World 🚀 !</h1>
+      <h1> 🎯 Todo App! </h1>
       <MainWidget />
     </div>
   );
