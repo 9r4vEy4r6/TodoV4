@@ -6,8 +6,8 @@ import db from '../firebase';
 import '../css/MainWidget.css';
 
 const MainWidget = (props) => {
-    const arr = [{name : "Task1", description:"Description 1"}, {name : "Task2", description:"Description 2"}, {name : "Task3", description:"Description 3"}]
-    const [todos, setTodos] = useState(arr);
+    //const arr = [{name : "Task1", description:"Description 1"}, {name : "Task2", description:"Description 2"}, {name : "Task3", description:"Description 3"}]
+    const [todos, setTodos] = useState([]);
 
     useEffect( ()=> {
         db
