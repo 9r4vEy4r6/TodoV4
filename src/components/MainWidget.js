@@ -1,14 +1,26 @@
-import React,{ useState } from 'react';
+import React,{ useEffect, useState } from 'react';
 import AddForm from './AddForm';
 import Tasklist from './Tasklist';
+import db from '../firebase';
 
 import '../css/MainWidget.css';
 
 const MainWidget = (props) => {
-    const [todos, setTodos] = useState([{name : "Task1", description:"Description 1"}, {name : "Task2", description:"Description 2"}, {name : "Task3", description:"Description 3"}]);
+    const arr = [{name : "Task1", description:"Description 1"}, {name : "Task2", description:"Description 2"}, {name : "Task3", description:"Description 3"}]
+    const [todos, setTodos] = useState(arr);
+
+    useEffect( ()=> {
+        db
+            .collection('todos')
+            .onSnapshot(snapshot => {
+                setTodos(snapshot.docs.map(doc => doc.data()))
+            });
+    }, []);
 
     const addTodo = (data) => {
-        setTodos([...todos, data]);
+        db
+            .collection('todos')
+            .add(data);
     }
 
     return (
