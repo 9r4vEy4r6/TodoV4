@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import {ListItem, ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, Button, Modal, FormControl , InputLabel, Input} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { blue } from '@material-ui/core/colors';
@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
         left: "50%",
         transform: "translate(-50%, -50%)",
     },
+    taskdiv : {
+        backgroundColor : "#c8ccc9",
+        margin : "0.4em 0em",
+        borderRadius : "5px",
+    }
     })
 );
 
@@ -27,8 +32,19 @@ const Task = (props) => {
     const classes = useStyles();
     
     const [open, setOpen] = useState(false);
-    const [input1, setInput1] = useState(props.taskData.data.name);
-    const [input2, setInput2] = useState(props.taskData.data.description);
+    const [input1, setInput1] = useState("");
+    const [input2, setInput2] = useState("");
+
+    useEffect( ()=> {
+        if(input1!==props.taskData.data.name)
+        {
+            setInput1(props.taskData.data.name);
+        }
+        if(input2!==props.taskData.data.description)
+        {
+            setInput2(props.taskData.data.description);
+        }
+    }, [input1, input2]);
     
     const handleInput1 = (e) =>{
         setInput1(e.target.value);
@@ -65,7 +81,7 @@ const Task = (props) => {
     }
 
     return (
-        <React.Fragment>
+        <div className={classes.taskdiv}>
 
             <Modal open={open} onClose={handleClose}>
                 <div className={classes.modal}>
@@ -100,7 +116,7 @@ const Task = (props) => {
                     </Button> 
                 </ListItemSecondaryAction>
             </ListItem>
-        </React.Fragment>
+        </div>
     )
 }
 
