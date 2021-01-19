@@ -14,8 +14,6 @@ const useStyles = makeStyles((theme) => ({
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
         padding: "3em 4em",
-        // width : "20em",
-        // height : "8em", 
         position: "absolute",
         top: "50%",
         left: "50%",
@@ -29,8 +27,8 @@ const Task = (props) => {
     const classes = useStyles();
     
     const [open, setOpen] = useState(false);
-    const [input1, setInput1] = useState("");
-    const [input2, setInput2] = useState("");
+    const [input1, setInput1] = useState(props.taskData.data.name);
+    const [input2, setInput2] = useState(props.taskData.data.description);
     
     const handleInput1 = (e) =>{
         setInput1(e.target.value);
@@ -38,6 +36,17 @@ const Task = (props) => {
 
     const handleInput2 = (e) =>{
         setInput2(e.target.value);
+    }
+
+    const handleUpdate = (e) => {
+        db
+            .collection('todos')
+            .doc(props.taskData.id)
+            .set({
+                name : input1,
+                description : input2
+            }, {merge : true});
+        setOpen(false);
     }
 
     const handleClose = (e) => {
@@ -70,7 +79,7 @@ const Task = (props) => {
                             <Input id="my-input2" value={input2} onChange={handleInput2} /> 
                         </FormControl><br /><br />
                         <FormControl>
-                            <Button disabled={!input1} variant="contained" color="primary" type="submit" onClick={handleClose}>
+                            <Button disabled={!input1} variant="contained" color="primary" type="submit" onClick={handleUpdate}>
                                 ✔️ Update
                             </Button>
                         </FormControl>

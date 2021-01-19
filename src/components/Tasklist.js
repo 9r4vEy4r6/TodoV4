@@ -4,7 +4,6 @@ import {List, Grid} from '@material-ui/core';
 
 const Tasklist = (props) => {
 
-    //console.log(props.tasks);
     const list1 = props.tasks.map((task,i) => {
         if(i%2===0)
         return <Task taskData={task} key={i} />
